@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Text.Json.Serialization;
 
@@ -21,5 +22,8 @@ namespace webapi.Models
         [JsonPropertyName("ifDone")]
         [BsonDefaultValue(false)]
         public bool IfDone { get; set; }
+        [BsonElement("date")]
+        [JsonPropertyName("date")]
+        public DateTime Date { get; set; }
     }
 }

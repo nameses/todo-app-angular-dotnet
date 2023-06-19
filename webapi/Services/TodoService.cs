@@ -26,7 +26,7 @@ namespace webapi.Services
         {
             //var list = await _todosCollection.Find(_ => true).ToListAsync();
             var sorting = Builders<Todo>.Sort.Ascending(x => x.IfDone)
-                         .Ascending(x => x.Description);
+                         .Ascending(x => x.Date);
 
             var sortedList = await _todosCollection.Find(FilterDefinition<Todo>.Empty)
                                             .Sort(sorting)

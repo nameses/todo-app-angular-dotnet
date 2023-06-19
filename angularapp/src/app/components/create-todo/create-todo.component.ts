@@ -5,18 +5,17 @@ import { TodoService } from '../../services/todo.service';
 @Component({
   selector: 'app-create-todo',
   templateUrl: './create-todo.component.html',
-  styleUrls: ['./create-todo.component.css']
+  styleUrls: ['./create-todo.component.css'],
 })
 export class CreateTodoComponent implements OnInit {
   form = new FormGroup({
     description: new FormControl<string>('', [
       Validators.required,
-      Validators.minLength(6)
-    ])
+      Validators.minLength(6),
+    ]),
   });
 
-
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {}
 
@@ -25,12 +24,11 @@ export class CreateTodoComponent implements OnInit {
   }
 
   submit(): void {
-    this.todoService.create(
-      {
-        description: this.description.value,
-        ifDone: false
-      }
-    );
+    this.todoService.create({
+      description: this.description.value,
+      ifDone: false,
+      date: new Date(),
+    });
     location.reload();
   }
 }

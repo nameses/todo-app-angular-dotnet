@@ -3,10 +3,11 @@
         <input class="form-check-input w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2" type="checkbox" [(ngModel)]="todo.ifDone" 
                 aria-label="..." (change)="toggleCheckbox(todo)" />
     </div>
-    <div class="w-11/12">
-        <h4>{{todo.description}}</h4>
+    <div class="w-9/12 whitespace-normal break-words pr-4">
+        <h4 #descriptionElement [contentEditable]="true" (blur)="saveDescription(todo)">{{todo.description}}</h4>
     </div>
-    <div class="flex justify-center w-1/12">
-        <i class="fas fa-bucket" (click)="deleteTodo(todo.id)"></i>
+    <div class="w-2/12 flex justify-evenly  hover:text-gray-500">
+        <h4>{{todo.date | date:'dd.MM'}}</h4>
+        <button (click)="deleteTodo(todo.id)"><i class="fas fa-bucket"></i></button>
     </div>
 </div>
