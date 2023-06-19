@@ -16,7 +16,7 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Todo>> Get() =>
+        public async Task<List<Todo>> Get() => 
             await _todoService.GetAsync();
 
         [HttpGet("{id:length(24)}")]

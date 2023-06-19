@@ -9,12 +9,13 @@
 
     <button
       class="ml-3 px-4 py-1 text-sm text-blue-800 font-semibold rounded-full border border-blue-800 hover:text-white 
-      hover:bg-blue-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+      hover:bg-blue-600 hover:border-transparent focus:outline-none"
       type="submit"
       [disabled]="!form.valid"
     >Create</button>
 
-    <p *ngIf="description.errors?.['minlength'] && description.touched">
-        Please fill description field with min length
-    </p>
+  
 </form>
+<p *ngIf="description.errors?.['minlength'] && description.touched">
+  Please fill description field with min length
+</p>

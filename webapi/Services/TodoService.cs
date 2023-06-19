@@ -22,9 +22,17 @@ namespace webapi.Services
         }
 
         //get all
-        public async Task<List<Todo>> GetAsync() =>
-            await _todosCollection.Find(_ => true).ToListAsync();
+        public async Task<List<Todo>> GetAsync()
+        {
+            //var list = await _todosCollection.Find(_ => true).ToListAsync();
+            var sorting = Builders<Todo>.Sort.Ascending(x => x.IfDone)
+                         .Ascending(x => x.Description);
 
+            var sortedList = await _todosCollection.Find(FilterDefinition<Todo>.Empty)
+                                            .Sort(sorting)
+                                            .ToListAsync();
+            return sortedList;
+        }
         //get
         public async Task<Todo> GetAsync(string id) =>
             await _todosCollection.Find(todo => todo.Id.Equals(id)).FirstOrDefaultAsync();
